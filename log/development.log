@@ -1,0 +1,69 @@
+  [1m[35m (29.0ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (42.3ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (13.4ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (14.0ms)[0m  [1m[34mSELECT GET_LOCK('2095125595784924745', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (12.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateUsers (20170515151039)
+  [1m[35m (29.1ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `email` varchar(255), `password` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (10.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170515151039')[0m
+  [1m[35m (16.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTodos (20170515151238)
+  [1m[35m (23.2ms)[0m  [1m[35mCREATE TABLE `todos` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `user_id_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_todos_on_user_id_id`  (`user_id_id`), CONSTRAINT `fk_rails_b6bbb86954`
+FOREIGN KEY (`user_id_id`)
+  REFERENCES `user_ids` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (11.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('2095125595784924745')[0m
+  [1m[35m (9.0ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (7.9ms)[0m  [1m[34mSELECT GET_LOCK('2095125595784924745', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (8.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateTodos (20170515151238)
+  [1m[35m (37.3ms)[0m  [1m[35mCREATE TABLE `todos` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_todos_on_user_id`  (`user_id`), CONSTRAINT `fk_rails_d94154aa95`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (7.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170515151238')[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProjects (20170515151308)
+  [1m[35m (26.1ms)[0m  [1m[35mCREATE TABLE `projects` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `user_id_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_projects_on_user_id_id`  (`user_id_id`), CONSTRAINT `fk_rails_721339fa7e`
+FOREIGN KEY (`user_id_id`)
+  REFERENCES `user_ids` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (8.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('2095125595784924745')[0m
+  [1m[35m (8.3ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (8.4ms)[0m  [1m[34mSELECT GET_LOCK('2095125595784924745', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (8.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateProjects (20170515151308)
+  [1m[35m (29.8ms)[0m  [1m[35mCREATE TABLE `projects` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_projects_on_user_id`  (`user_id`), CONSTRAINT `fk_rails_b872a6760a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (7.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (8.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170515151308')[0m
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateItems (20170515151509)
+  [1m[35m (32.8ms)[0m  [1m[35mCREATE TABLE `items` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `done` tinyint(1), `urgency` int, `importance` int, `deadline` date, `est_time_completion` int, `time_to_completion` int, `project_id` int, `todo_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_items_on_project_id`  (`project_id`),  INDEX `index_items_on_todo_id`  (`todo_id`), CONSTRAINT `fk_rails_f6abf55b81`
+FOREIGN KEY (`project_id`)
+  REFERENCES `projects` (`id`)
+, CONSTRAINT `fk_rails_c01e6b449d`
+FOREIGN KEY (`todo_id`)
+  REFERENCES `todos` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (7.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170515151509')[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (8.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (13.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (8.8ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2017-05-15 16:36:09', '2017-05-15 16:36:09')[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (8.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('2095125595784924745')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (8.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (8.0ms)[0m  [1m[35mSHOW CREATE TABLE `items`[0m
+  [1m[35m (9.2ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'items'[0m
+  [1m[35m (7.8ms)[0m  [1m[35mSHOW CREATE TABLE `projects`[0m
+  [1m[35m (8.2ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'projects'[0m
+  [1m[35m (8.1ms)[0m  [1m[35mSHOW CREATE TABLE `todos`[0m
+  [1m[35m (8.7ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'todos'[0m
+  [1m[35m (8.7ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (9.0ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m

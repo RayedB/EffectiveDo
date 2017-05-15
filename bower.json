@@ -1,0 +1,17 @@
+{
+  "name": "EffectiveDo",
+  "homepage": "https://github.com/RayedB/EffectiveDo",
+  "authors": [
+    "Rayed Benbrahim <rayed.benbrahim@gmail.com>"
+  ],
+  "description": "New way of Doing",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
