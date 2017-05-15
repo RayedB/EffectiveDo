@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Todo, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  # Association tests
+  it { should belong_to(:user) }
+  it { should have_many(:items).dependent(:destroy)}
+
+  #Validation tests
+  it { shoud validates_presence_of(:name)}
+  it { shoud validates_presence_of(:user)}
 end
