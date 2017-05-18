@@ -7,6 +7,6 @@ RSpec.describe Todo, type: :model do
   it { should have_many(:items).dependent(:destroy)}
 
   #Validation tests
-  it { shoud validates_presence_of(:name)}
-  it { shoud validates_presence_of(:user)}
+  it { should validate_presence_of(:name)}
+  it { should validate_presence_of(:user)}
 end
