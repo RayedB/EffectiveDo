@@ -1,0 +1,80 @@
+  [1m[35m (12.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS `EffectiveDo_test`[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE DATABASE `EffectiveDo_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (30.3ms)[0m  [1m[35mCREATE TABLE `items` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `done` tinyint(1), `urgency` int, `importance` int, `deadline` date, `est_time_completion` int, `time_to_completion` int, `project_id` int, `todo_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_items_on_project_id` USING btree (`project_id`),  INDEX `index_items_on_todo_id` USING btree (`todo_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (26.6ms)[0m  [1m[35mCREATE TABLE `projects` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_projects_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (26.4ms)[0m  [1m[35mCREATE TABLE `todos` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_todos_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `email` varchar(255), `password` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (61.9ms)[0m  [1m[35mALTER TABLE `items` ADD CONSTRAINT `fk_rails_f6abf55b81`
+FOREIGN KEY (`project_id`)
+  REFERENCES `projects` (`id`)
+[0m
+  [1m[35m (47.6ms)[0m  [1m[35mALTER TABLE `items` ADD CONSTRAINT `fk_rails_c01e6b449d`
+FOREIGN KEY (`todo_id`)
+  REFERENCES `todos` (`id`)
+[0m
+  [1m[35m (44.4ms)[0m  [1m[35mALTER TABLE `projects` ADD CONSTRAINT `fk_rails_b872a6760a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (45.4ms)[0m  [1m[35mALTER TABLE `todos` ADD CONSTRAINT `fk_rails_d94154aa95`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (25.9ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (8.5ms)[0m  [1m[34mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (12.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20170515151509)[0m
+  [1m[35m (15.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20170515151039),
+(20170515151238),
+(20170515151308);
+
+[0m
+  [1m[35m (29.7ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (8.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (7.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'test', '2017-05-18 16:39:46', '2017-05-18 16:39:46')[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (8.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (8.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (7.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (10.7ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (12.3ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (11.1ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (10.6ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'EffectiveDo_test'[0m
+  [1m[35m (23.0ms)[0m  [1m[35mTRUNCATE TABLE `ar_internal_metadata`;[0m
+  [1m[35m (22.5ms)[0m  [1m[35mTRUNCATE TABLE `items`;[0m
+  [1m[35m (21.1ms)[0m  [1m[35mTRUNCATE TABLE `projects`;[0m
+  [1m[35m (20.8ms)[0m  [1m[35mTRUNCATE TABLE `todos`;[0m
+  [1m[35m (21.0ms)[0m  [1m[35mTRUNCATE TABLE `users`;[0m
+  [1m[35m (8.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (8.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (7.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (11.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (12.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (7.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (7.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (7.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (7.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (8.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (8.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (7.7ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (7.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (7.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (7.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (9.6ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (7.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (7.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (8.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (7.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.1ms)[0m  [1m[31mROLLBACK[0m
