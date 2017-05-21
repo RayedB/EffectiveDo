@@ -1,4 +1,7 @@
 class User < ApplicationRecord
-  validates :email, presence: true
+
+  has_many :todos, foreign_key: :created_by
+
+  validates_presence_of :email, :name, :password_digest
 
 end

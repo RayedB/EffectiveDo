@@ -8,5 +8,6 @@ RSpec.describe Todo, type: :model do
 
   #Validation tests
   it { should validate_presence_of(:name)}
-  #it { should validate_presence_of(:user)}
+  it { should validate_presence_of(:created_by) }
+
 end

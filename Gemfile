@@ -30,12 +30,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 # FIGARO - Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # Gemfile
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

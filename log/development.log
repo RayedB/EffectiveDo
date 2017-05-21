@@ -67,3 +67,346 @@ FOREIGN KEY (`todo_id`)
   [1m[35m (8.7ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'todos'[0m
   [1m[35m (8.7ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
   [1m[35m (9.0ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+Started POST "/todos" for 127.0.0.1 at 2017-05-21 14:57:52 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (28.8ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by TodosController#create as */*
+  Parameters: {"name"=>"Rians", "description"=>"Great goat dairy", "type"=>"Manufacturer", "country"=>"France", "products"=>"yogurt", "brands"=>"rians", "moq_order"=>"300", "delivery_time"=>"30"}
+Unpermitted parameters: description, type, country, products, brands, moq_order, delivery_time
+  [1m[35m (29.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (48.1ms)[0m  [1m[32mINSERT INTO `todos` (`name`, `created_at`, `updated_at`) VALUES ('Rians', '2017-05-21 12:57:53', '2017-05-21 12:57:53')[0m
+  [1m[35m (48.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 306ms (Views: 0.9ms | ActiveRecord: 260.5ms)
+
+
+Started DELETE "/todos/1" for 127.0.0.1 at 2017-05-21 14:58:56 +0200
+Processing by TodosController#destroy as */*
+  Parameters: {"name"=>"Rians", "description"=>"Great goat dairy", "type"=>"Manufacturer", "country"=>"France", "products"=>"yogurt", "brands"=>"rians", "moq_order"=>"300", "delivery_time"=>"30", "id"=>"1"}
+  [1m[36mTodo Load (33.1ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 1 LIMIT 1[0m
+  [1m[35m (35.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (35.2ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE `items`.`todo_id` = 1[0m
+  [1m[35mSQL (32.1ms)[0m  [1m[31mDELETE FROM `todos` WHERE `todos`.`id` = 1[0m
+  [1m[35m (37.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 251ms (ActiveRecord: 207.8ms)
+
+
+Started GET "/todos/" for 127.0.0.1 at 2017-05-21 14:59:07 +0200
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (32.3ms)[0m  [1m[34mSELECT `todos`.* FROM `todos`[0m
+Completed 200 OK in 35ms (Views: 1.0ms | ActiveRecord: 32.3ms)
+
+
+Started POST "/todos/" for 127.0.0.1 at 2017-05-21 14:59:50 +0200
+Processing by TodosController#create as */*
+  Parameters: {"name"=>"Lorem ipsum"}
+  [1m[35m (28.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (33.9ms)[0m  [1m[32mINSERT INTO `todos` (`name`, `created_at`, `updated_at`) VALUES ('Lorem ipsum', '2017-05-21 12:59:50', '2017-05-21 12:59:50')[0m
+  [1m[35m (40.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 108ms (Views: 0.6ms | ActiveRecord: 102.6ms)
+
+
+Started PATCH "/todos/2" for 127.0.0.1 at 2017-05-21 15:00:14 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"Lorem", "id"=>"2"}
+  [1m[36mTodo Load (29.1ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Unpermitted parameter: id
+  [1m[35m (35.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (29.0ms)[0m  [1m[33mUPDATE `todos` SET `name` = 'Lorem', `updated_at` = '2017-05-21 13:00:15' WHERE `todos`.`id` = 2[0m
+  [1m[35m (32.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 133ms (ActiveRecord: 125.5ms)
+
+
+Started GET "/todos/" for 127.0.0.1 at 2017-05-21 15:00:23 +0200
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (32.5ms)[0m  [1m[34mSELECT `todos`.* FROM `todos`[0m
+Completed 200 OK in 34ms (Views: 1.3ms | ActiveRecord: 32.5ms)
+
+
+Started PUT "/todos/2" for 127.0.0.1 at 2017-05-21 15:03:19 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"Ekimetrics", "id"=>"2"}
+  [1m[36mTodo Load (36.7ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Unpermitted parameter: id
+  [1m[35m (29.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (28.7ms)[0m  [1m[33mUPDATE `todos` SET `name` = 'Ekimetrics', `updated_at` = '2017-05-21 13:03:19' WHERE `todos`.`id` = 2[0m
+  [1m[35m (33.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 150ms (ActiveRecord: 128.8ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/concerns/response.rb:3:in `json_response'
+app/controllers/todos_controller.rb:25:in `update'
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (247.2ms)
+Started GET "/todos/" for 127.0.0.1 at 2017-05-21 15:03:35 +0200
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (30.8ms)[0m  [1m[34mSELECT `todos`.* FROM `todos`[0m
+Completed 200 OK in 33ms (Views: 1.7ms | ActiveRecord: 30.8ms)
+
+
+Started PUT "/todos/2" for 127.0.0.1 at 2017-05-21 15:04:00 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"Ekims", "id"=>"2"}
+  [1m[36mTodo Load (30.7ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Unpermitted parameter: id
+  [1m[35m (28.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (29.6ms)[0m  [1m[33mUPDATE `todos` SET `name` = 'Ekims', `updated_at` = '2017-05-21 13:04:00' WHERE `todos`.`id` = 2[0m
+  [1m[35m (34.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 242ms (ActiveRecord: 217.6ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/concerns/response.rb:3:in `json_response'
+app/controllers/todos_controller.rb:25:in `update'
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.3ms)
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (207.1ms)
+Started PUT "/todos/2" for 127.0.0.1 at 2017-05-21 15:04:55 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"Eki", "id"=>"2"}
+  [1m[36mTodo Load (28.4ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Unpermitted parameter: id
+  [1m[35m (29.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (29.3ms)[0m  [1m[33mUPDATE `todos` SET `name` = 'Eki', `updated_at` = '2017-05-21 13:04:55' WHERE `todos`.`id` = 2[0m
+  [1m[35m (33.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 140ms (ActiveRecord: 121.0ms)
+
+
+Started PUT "/todos/2" for 127.0.0.1 at 2017-05-21 15:05:06 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"Ekimet", "id"=>"2"}
+  [1m[36mTodo Load (502.6ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Unpermitted parameter: id
+  [1m[35m (29.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (30.9ms)[0m  [1m[33mUPDATE `todos` SET `name` = 'Ekimet', `updated_at` = '2017-05-21 13:05:07' WHERE `todos`.`id` = 2[0m
+  [1m[35m (31.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 601ms (ActiveRecord: 594.4ms)
+
+
+Started PUT "/todos/2" for 127.0.0.1 at 2017-05-21 15:06:07 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"Ekimettrics", "id"=>"2"}
+  [1m[36mTodo Load (31.4ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Unpermitted parameter: id
+  [1m[35m (27.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (30.6ms)[0m  [1m[33mUPDATE `todos` SET `name` = 'Ekimettrics', `updated_at` = '2017-05-21 13:06:08' WHERE `todos`.`id` = 2[0m
+  [1m[35m (34.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 239ms (ActiveRecord: 216.3ms)
+
+
+Started PUT "/todos/2" for 127.0.0.1 at 2017-05-21 15:06:38 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"imetrics", "id"=>"2"}
+  [1m[36mTodo Load (30.5ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Unpermitted parameter: id
+  [1m[35m (30.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (31.5ms)[0m  [1m[33mUPDATE `todos` SET `name` = 'imetrics', `updated_at` = '2017-05-21 13:06:38' WHERE `todos`.`id` = 2[0m
+  [1m[35m (35.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 151ms (ActiveRecord: 128.0ms)
+
+
+Started PATCH "/todos/2" for 127.0.0.1 at 2017-05-21 15:06:59 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"imetrics", "id"=>"2"}
+  [1m[36mTodo Load (30.3ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Unpermitted parameter: id
+  [1m[35m (29.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (35.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 100ms (ActiveRecord: 95.7ms)
+
+
+Started GET "/todos/2" for 127.0.0.1 at 2017-05-21 15:07:18 +0200
+Processing by TodosController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mTodo Load (30.1ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Completed 200 OK in 32ms (Views: 0.7ms | ActiveRecord: 30.1ms)
+
+
+Started GET "/todos/" for 127.0.0.1 at 2017-05-21 15:07:23 +0200
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (47.4ms)[0m  [1m[34mSELECT `todos`.* FROM `todos`[0m
+Completed 200 OK in 50ms (Views: 1.7ms | ActiveRecord: 47.4ms)
+
+
+Started POST "/todos/" for 127.0.0.1 at 2017-05-21 15:07:42 +0200
+Processing by TodosController#create as */*
+  Parameters: {"name"=>"maison"}
+  [1m[35m (31.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (36.9ms)[0m  [1m[32mINSERT INTO `todos` (`name`, `created_at`, `updated_at`) VALUES ('maison', '2017-05-21 13:07:42', '2017-05-21 13:07:42')[0m
+  [1m[35m (38.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 111ms (Views: 0.7ms | ActiveRecord: 106.8ms)
+
+
+Started GET "/todos/" for 127.0.0.1 at 2017-05-21 15:07:49 +0200
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (39.1ms)[0m  [1m[34mSELECT `todos`.* FROM `todos`[0m
+Completed 200 OK in 41ms (Views: 1.8ms | ActiveRecord: 39.1ms)
+
+
+Started PUT "/todos/2" for 127.0.0.1 at 2017-05-21 15:08:30 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"maison", "user_id"=>"1", "id"=>"2"}
+  [1m[36mTodo Load (29.3ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 2 LIMIT 1[0m
+Unpermitted parameters: user_id, id
+  [1m[35m (29.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (29.3ms)[0m  [1m[33mUPDATE `todos` SET `name` = 'maison', `updated_at` = '2017-05-21 13:08:30' WHERE `todos`.`id` = 2[0m
+  [1m[35m (38.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 132ms (ActiveRecord: 126.8ms)
+
+
+Started PUT "/todos/3" for 127.0.0.1 at 2017-05-21 15:09:02 +0200
+Processing by TodosController#update as */*
+  Parameters: {"name"=>"maison", "user_id"=>"2", "id"=>"3"}
+  [1m[36mTodo Load (38.8ms)[0m  [1m[34mSELECT  `todos`.* FROM `todos` WHERE `todos`.`id` = 3 LIMIT 1[0m
+Unpermitted parameters: user_id, id
+  [1m[35m (27.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (34.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 118ms (ActiveRecord: 100.0ms)
+
+
+Started GET "/todos/" for 127.0.0.1 at 2017-05-21 15:09:10 +0200
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (32.3ms)[0m  [1m[34mSELECT `todos`.* FROM `todos`[0m
+Completed 200 OK in 35ms (Views: 1.8ms | ActiveRecord: 32.3ms)
+
+
+  [1m[35m (28.9ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (65.2ms)[0m  [1m[34mSELECT GET_LOCK('2095125595784924745', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (30.1ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to RenamePassword (20170521133054)
+  [1m[35m (53.6ms)[0m  [1m[35mALTER TABLE `users` CHANGE `password` `password_digest` varchar(255)[0m
+  [1m[35m (31.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (28.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170521133054')[0m
+  [1m[35m (32.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (30.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (36.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (31.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (44.7ms)[0m  [1m[34mSELECT RELEASE_LOCK('2095125595784924745')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (30.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (30.1ms)[0m  [1m[35mSHOW CREATE TABLE `items`[0m
+  [1m[35m (34.2ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'items'[0m
+  [1m[35m (30.0ms)[0m  [1m[35mSHOW CREATE TABLE `projects`[0m
+  [1m[35m (32.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'projects'[0m
+  [1m[35m (34.4ms)[0m  [1m[35mSHOW CREATE TABLE `todos`[0m
+  [1m[35m (36.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'todos'[0m
+  [1m[35m (29.9ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (39.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (31.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (29.8ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (32.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (30.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (32.0ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (36.9ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (92.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS `EffectiveDo_test`[0m
+  [1m[35m (36.9ms)[0m  [1m[35mCREATE DATABASE `EffectiveDo_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (58.0ms)[0m  [1m[35mCREATE TABLE `items` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `done` tinyint(1), `urgency` int, `importance` int, `deadline` date, `est_time_completion` int, `time_to_completion` int, `project_id` int, `todo_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_items_on_project_id` USING btree (`project_id`),  INDEX `index_items_on_todo_id` USING btree (`todo_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (50.9ms)[0m  [1m[35mCREATE TABLE `projects` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_projects_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (56.3ms)[0m  [1m[35mCREATE TABLE `todos` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_todos_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (57.2ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `email` varchar(255), `password_digest` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (95.4ms)[0m  [1m[35mALTER TABLE `items` ADD CONSTRAINT `fk_rails_f6abf55b81`
+FOREIGN KEY (`project_id`)
+  REFERENCES `projects` (`id`)
+[0m
+  [1m[35m (74.8ms)[0m  [1m[35mALTER TABLE `items` ADD CONSTRAINT `fk_rails_c01e6b449d`
+FOREIGN KEY (`todo_id`)
+  REFERENCES `todos` (`id`)
+[0m
+  [1m[35m (75.9ms)[0m  [1m[35mALTER TABLE `projects` ADD CONSTRAINT `fk_rails_b872a6760a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (78.4ms)[0m  [1m[35mALTER TABLE `todos` ADD CONSTRAINT `fk_rails_d94154aa95`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (56.7ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (31.9ms)[0m  [1m[34mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (47.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20170521133054)[0m
+  [1m[35m (35.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20170515151039),
+(20170515151238),
+(20170515151308),
+(20170515151509);
+
+[0m
+  [1m[35m (50.0ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (47.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (31.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (32.6ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2017-05-21 13:32:56', '2017-05-21 13:32:56')[0m
+  [1m[35m (35.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (34.7ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (28.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (30.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (32.0ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (45.0ms)[0m  [1m[34mSELECT GET_LOCK('2095125595784924745', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (28.9ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddNameToUsers (20170521133407)
+  [1m[35m (63.9ms)[0m  [1m[35mALTER TABLE `users` ADD `name` varchar(255)[0m
+  [1m[35m (29.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (31.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170521133407')[0m
+  [1m[35m (41.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (37.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (30.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (43.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (29.8ms)[0m  [1m[34mSELECT RELEASE_LOCK('2095125595784924745')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (39.0ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (30.6ms)[0m  [1m[35mSHOW CREATE TABLE `items`[0m
+  [1m[35m (31.2ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'items'[0m
+  [1m[35m (33.2ms)[0m  [1m[35mSHOW CREATE TABLE `projects`[0m
+  [1m[35m (30.7ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'projects'[0m
+  [1m[35m (34.8ms)[0m  [1m[35mSHOW CREATE TABLE `todos`[0m
+  [1m[35m (32.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'todos'[0m
+  [1m[35m (33.6ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (44.7ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[35m (28.5ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (30.5ms)[0m  [1m[34mSELECT GET_LOCK('2095125595784924745', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (32.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddCreatedByToTodos (20170521134432)
+  [1m[35m (92.9ms)[0m  [1m[35mALTER TABLE `todos` ADD `created_by` varchar(255)[0m
+  [1m[35m (29.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (38.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170521134432')[0m
+  [1m[35m (31.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (31.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (31.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (48.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (33.0ms)[0m  [1m[34mSELECT RELEASE_LOCK('2095125595784924745')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (35.1ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (31.5ms)[0m  [1m[35mSHOW CREATE TABLE `items`[0m
+  [1m[35m (32.9ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'items'[0m
+  [1m[35m (30.0ms)[0m  [1m[35mSHOW CREATE TABLE `projects`[0m
+  [1m[35m (35.8ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'projects'[0m
+  [1m[35m (32.5ms)[0m  [1m[35mSHOW CREATE TABLE `todos`[0m
+  [1m[35m (34.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'todos'[0m
+  [1m[35m (29.8ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (33.8ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+Started GET "/" for 127.0.0.1 at 2017-05-21 17:18:09 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (37.8ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.0.3/lib/rails/templates/rails/welcome/index.html.erb (6.8ms)
+Completed 200 OK in 25ms (Views: 15.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-21 17:18:09 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/opt/rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.0.3/lib/rails/templates/rails/welcome/index.html.erb (5.7ms)
+Completed 200 OK in 20ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+
+
