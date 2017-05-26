@@ -410,3 +410,192 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 20ms (Views: 11.6ms | ActiveRecord: 0.0ms)
 
 
+Started POST "/signup" for 127.0.0.1 at 2017-05-26 14:47:19 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (10.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  
+SyntaxError (/Users/RaB/Coding/EffectiveDo/app/controllers/concerns/exception_handler.rb:43: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/concerns/exception_handler.rb:43: syntax error, unexpected keyword_end, expecting end-of-input
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+app/controllers/users_controller.rb:1:in `<top (required)>'
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.4ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.9ms)
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (79.3ms)
+Started POST "/signup" for 127.0.0.1 at 2017-05-26 14:47:48 +0200
+  
+ActiveSupport::Concern::MultipleIncludedBlocks (Cannot define multiple 'included' blocks for a Concern):
+  
+app/controllers/concerns/exception_handler.rb:21:in `<module:ExceptionHandler>'
+app/controllers/concerns/exception_handler.rb:1:in `<top (required)>'
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+app/controllers/users_controller.rb:1:in `<top (required)>'
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.2ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (67.6ms)
+Started POST "/signup" for 127.0.0.1 at 2017-05-26 14:48:25 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Rayed", "email"=>"rayed.benbrahim@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 25.9ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'password' for User.):
+  
+app/controllers/users_controller.rb:6:in `create'
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.7ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (59.5ms)
+Started POST "/signup" for 127.0.0.1 at 2017-05-26 14:50:44 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Rayed", "email"=>"rayed.benbrahim@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'password' for User.):
+  
+app/controllers/users_controller.rb:6:in `create'
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.9ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.6ms)
+Started POST "/signup" for 127.0.0.1 at 2017-05-26 15:05:32 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Rayed", "email"=>"rayed.benbrahim@gmail.com"}
+  [1m[35m (8.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.7ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 63ms (Views: 2.8ms | ActiveRecord: 15.8ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2017-05-26 15:05:37 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Rayed", "email"=>"rayed.benbrahim@gmail.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'password' for User.):
+  
+app/controllers/users_controller.rb:6:in `create'
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.7ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (72.5ms)
+Started POST "/signup" for 127.0.0.1 at 2017-05-26 15:06:27 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Rayed", "email"=>"rayed.benbrahim@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 25.7ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'password' for User.):
+  
+app/controllers/users_controller.rb:6:in `create'
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.6ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (59.8ms)
+Started POST "/signup" for 127.0.0.1 at 2017-05-26 15:11:25 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Rayed", "email"=>"rayed.benbrahim@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (9.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (8.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `password_digest`, `created_at`, `updated_at`, `name`) VALUES ('rayed.benbrahim@gmail.com', '$2a$10$1aNl//xL7v9h0/3wx5VVWuVDgkEX2FyOkI4n5OnSY/JsmRXgb1JOC', '2017-05-26 13:11:25', '2017-05-26 13:11:25', 'Rayed')[0m
+  [1m[35m (12.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (8.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'rayed.benbrahim@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'rayed.benbrahim@gmail.com' LIMIT 1[0m  [["email", "rayed.benbrahim@gmail.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 264ms (ActiveRecord: 38.5ms)
+
+
+  
+NameError (uninitialized constant JsonWebToken::JWT):
+  
+app/lib/json_web_token.rb:9:in `encode'
+app/auth/authenticate_user.rb:9:in `call'
+app/controllers/users_controller.rb:7:in `create'
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.0ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.9ms)
+Started POST "/signup" for 127.0.0.1 at 2017-05-26 15:12:56 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (8.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Rayed", "email"=>"rayed.benbrahim@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (6.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.7ms)[0m  [1m[32mINSERT INTO `users` (`email`, `password_digest`, `created_at`, `updated_at`, `name`) VALUES ('rayed.benbrahim@gmail.com', '$2a$10$bYqOl3ZSDBfG2.0ElEzIy.kSB789lyywjOC5901cPpMJsh3XIL8da', '2017-05-26 13:12:57', '2017-05-26 13:12:57', 'Rayed')[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (10.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'rayed.benbrahim@gmail.com' LIMIT 1[0m
+  [1m[36mUser Load (8.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'rayed.benbrahim@gmail.com' LIMIT 1[0m
+Completed 201 Created in 314ms (Views: 0.3ms | ActiveRecord: 75.8ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2017-05-26 15:31:58 +0200
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 3ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2017-05-26 15:32:09 +0200
+Processing by TodosController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+app/lib/json_web_token.rb:14:in `decode'
+app/auth/authorize_api_request.rb:32:in `decoded_auth_token'
+app/auth/authorize_api_request.rb:20:in `user'
+app/auth/authorize_api_request.rb:9:in `call'
+app/controllers/application_controller.rb:12:in `authorize_request'
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.6ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (14.3ms)
+  Rendered /Users/RaB/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (83.6ms)
+Started GET "/todos" for 127.0.0.1 at 2017-05-26 15:32:28 +0200
+Processing by TodosController#index as */*
+  [1m[36mUser Load (7.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTodo Load (8.3ms)[0m  [1m[34mSELECT `todos`.* FROM `todos` WHERE `todos`.`created_by` = '1'[0m
+Completed 200 OK in 53ms (Views: 8.1ms | ActiveRecord: 25.3ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2017-05-26 15:32:43 +0200
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
